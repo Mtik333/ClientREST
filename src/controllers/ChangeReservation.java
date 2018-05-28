@@ -10,8 +10,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import nothing.*;
 
+import javax.ws.rs.core.Response;
 import javax.xml.namespace.QName;
-import javax.xml.ws.Response;
 import javax.xml.ws.Service;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -45,11 +45,12 @@ public class ChangeReservation implements Initializable {
         changeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                RsiSeat newSeat = seats.stream().filter(rsiSeat -> rsiSeat.getId().intValue() == (int) choiceBox.getSelectionModel().getSelectedItem()).findFirst().get();
+                RsiSeat newSeat = seats.stream().filter(rsiSeat -> ((rsiSeat.getSeatNumber()-1)*5+rsiSeat.getSeatRow()) == (int) choiceBox.getSelectionModel().getSelectedItem()).findFirst().get();
                 Marshal marshal = new Marshal();
                 marshal.setRsiSeat(newSeat);
                 marshal.setRsiReservation(reservation);
-                cinemaClient.changeReservation(marshal, reservation.getId().toString());
+                Response response = cinemaClient.changeReservation(marshal, reservation.getId().toString());
+                int i=0;
                 //hello.changeReservation(reservation, newSeat);
             }
         });

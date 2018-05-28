@@ -57,7 +57,7 @@ public class MovieDetailsController implements Initializable {
         for (Map.Entry<RsiScreening, RsiAuditorium> entry : mapScreeningAuditorium.entrySet()) {
             String[] test2 = name.split("\t");
             String test = test2[0];
-            if (entry.getValue().getName().contentEquals(test)) {
+            if (entry.getKey().getAuditoriumId().getName().contentEquals(test)) {
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
                 String date;
                 date = sdf.format(entry.getKey().getGregorianCalendar().toGregorianCalendar().getTime());
@@ -100,7 +100,7 @@ public class MovieDetailsController implements Initializable {
         for (Map.Entry<RsiScreening, RsiAuditorium> entry : mapScreeningAuditorium.entrySet()) {
             try {
                 date = sdf.format(entry.getKey().getGregorianCalendar().toGregorianCalendar().getTime());
-                titles.add(entry.getValue().getName() + "\t\t" + date);
+                titles.add(entry.getKey().getAuditoriumId().getName() + "\t\t" + date);
             } catch (DatatypeConfigurationException e) {
                 e.printStackTrace();
             }
@@ -146,7 +146,7 @@ public class MovieDetailsController implements Initializable {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/SeatDetails.fxml"));
                     try {
                         SeatDetails.rsiScreening = findScreening(lastItem).getKey();
-                        SeatDetails.rsiAuditorium = findScreening(lastItem).getValue();
+                        SeatDetails.rsiAuditorium = findScreening(lastItem).getKey().getAuditoriumId();
                     } catch (DatatypeConfigurationException e) {
                         e.printStackTrace();
                     }

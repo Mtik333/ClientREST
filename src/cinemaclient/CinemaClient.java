@@ -114,10 +114,9 @@ public class CinemaClient {
         return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request().delete(Response.class);
     }
 
-    public Response pdfReservation(Object requestEntity) throws ClientErrorException {
-        return webTarget.path("pdf").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
+    public Response pdfReservation(String id) throws ClientErrorException {
+        return webTarget.path(java.text.MessageFormat.format("pdf/{0}", new Object[]{id})).request().post(null, Response.class);
     }
-
     public void close() {
         client.close();
     }

@@ -166,8 +166,8 @@ public class MyReservationsController implements Initializable {
                 public void handle(ActionEvent event) {
                     //https://kbdeveloper.qoppa.com/javafx-pdf-viewer/
                     CinemaClient cinemaClient = new CinemaClient();
-                    Response response = cinemaClient.pdfReservation(reservationList.get(0));
-
+                    RsiReservation test = findReservation(label.getText());
+                    Response response = cinemaClient.pdfReservation(test.getId().toString());
                     byte[] bais = response.readEntity(byte[].class);
                     File file = new File("itext-test.pdf");
                     FileOutputStream fileout = null;

@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.net.ProxySelector;
+
 public class Main2 extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -15,6 +17,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 //        System.setProperty("javax.net.ssl.trustStore", "D:\\RSI_PS6");
 //        System.setProperty("javax.net.ssl.trustStorePassword", "herbata");
+        ProxySelector.setDefault(new CustomProxySelector());
         Parent root = FXMLLoader.load(getClass().getResource("../fxmls/sample.fxml"));
         primaryStage.setTitle("RSI Cinema - login");
         primaryStage.setScene(new Scene(root));
