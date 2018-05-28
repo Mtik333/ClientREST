@@ -1,3 +1,5 @@
+package sample;
+
 import cinemaclient.CinemaClient;
 import nothing.ResponseList;
 import nothing.RsiAuditorium;

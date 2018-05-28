@@ -8,11 +8,14 @@
 
 package nothing;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 
 /**
@@ -50,7 +53,28 @@ public class RsiScreening {
     protected RsiMovie movieId;
     protected Integer id;
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar screeningStart;
+    protected long screeningStart;
+
+//    protected XMLGregorianCalendar xmlGregorianCalendar;
+//
+//    public XMLGregorianCalendar getXmlGregorianCalendar() {
+//        return xmlGregorianCalendar;
+//    }
+//
+//    public void setXmlGregorianCalendar() throws DatatypeConfigurationException {
+//        Timestamp ts = new Timestamp(new Date().getTime());
+//        ts.setTime(screeningStart);
+//        LocalDateTime ldt = ts.toLocalDateTime();
+//        XMLGregorianCalendar cal = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+//        cal.setYear(ldt.getYear());
+//        cal.setMonth(ldt.getMonthValue());
+//        cal.setDay(ldt.getDayOfMonth());
+//        cal.setHour(ldt.getHour());
+//        cal.setMinute(ldt.getMinute());
+//        cal.setSecond(ldt.getSecond());
+//        cal.setFractionalSecond(new BigDecimal("0." + ldt.getNano()));
+//        this.xmlGregorianCalendar = cal;
+//    }
 
     /**
      * Gets the value of the auditoriumId property.
@@ -132,7 +156,7 @@ public class RsiScreening {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getScreeningStart() {
+    public long getScreeningStart() {
         return screeningStart;
     }
 
@@ -144,8 +168,43 @@ public class RsiScreening {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setScreeningStart(XMLGregorianCalendar value) {
-        this.screeningStart = value;
-    }
 
+    public void setScreeningStart(long value){
+        this.screeningStart=value;
+    }
+//    public void setScreeningStart(long value) throws DatatypeConfigurationException {
+//        this.screeningStart=value;
+//        Timestamp ts = new Timestamp(new Date().getTime());
+//        ts.setTime(value);
+//        LocalDateTime ldt = ts.toLocalDateTime();
+//        XMLGregorianCalendar cal = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+//        cal.setYear(ldt.getYear());
+//        cal.setMonth(ldt.getMonthValue());
+//        cal.setDay(ldt.getDayOfMonth());
+//        cal.setHour(ldt.getHour());
+//        cal.setMinute(ldt.getMinute());
+//        cal.setSecond(ldt.getSecond());
+//        cal.setFractionalSecond(new BigDecimal("0." + ldt.getNano()));
+//        System.out.println(ldt);
+//        System.out.println(cal);
+//        this.xmlGregorianCalendar=cal;
+////        this.screeningStart = cal;
+//    }
+
+    public XMLGregorianCalendar getGregorianCalendar() throws DatatypeConfigurationException {
+        Timestamp ts = new Timestamp(new Date().getTime());
+        ts.setTime(this.screeningStart);
+        LocalDateTime ldt = ts.toLocalDateTime();
+        XMLGregorianCalendar cal = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+        cal.setYear(ldt.getYear());
+        cal.setMonth(ldt.getMonthValue());
+        cal.setDay(ldt.getDayOfMonth());
+        cal.setHour(ldt.getHour());
+        cal.setMinute(ldt.getMinute());
+        cal.setSecond(ldt.getSecond());
+        cal.setFractionalSecond(new BigDecimal("0." + ldt.getNano()));
+        System.out.println(ldt);
+        System.out.println(cal);
+        return cal;
+    }
 }

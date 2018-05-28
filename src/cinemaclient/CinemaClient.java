@@ -8,6 +8,7 @@ package cinemaclient;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
 
 /**
  * Jersey REST client generated for REST resource:CinemaImpl [cinema]<br>
@@ -91,14 +92,30 @@ public class CinemaClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
-    public <T> T downloadImage(Class<T> responseType) throws ClientErrorException {
+    public <T> T downloadImage(Class<T> responseType, String name) throws ClientErrorException {
         WebTarget resource = webTarget;
-        resource = resource.path("image");
+        resource = resource.path(java.text.MessageFormat.format("image/{0}", new Object[]{name}));
         return resource.request().get(responseType);
     }
 
     public final void setUsernamePassword(String username, String password) {
         webTarget.register(new org.glassfish.jersey.client.filter.HttpBasicAuthFilter(username, password));
+    }
+
+    public Response createReservation(Object requestEntity) throws ClientErrorException {
+        return webTarget.path("reservations").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
+    }
+
+    public Response changeReservation(Object requestEntity, String id) throws ClientErrorException {
+        return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
+    }
+
+    public Response removeReservation(String id) throws ClientErrorException {
+        return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request().delete(Response.class);
+    }
+
+    public Response pdfReservation(Object requestEntity) throws ClientErrorException {
+        return webTarget.path("pdf").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
     }
 
     public void close() {
