@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -51,7 +53,14 @@ public class MyReservationsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CinemaClient cinemaClient = new CinemaClient();
+        CinemaClient cinemaClient = null;
+        try {
+            cinemaClient = new CinemaClient();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         ResponseList responseList = cinemaClient.getReservations(ResponseList.class);
 
         reservationList = responseList.getReservations().stream().filter(reservation -> reservation.getClientReserverId().getId().intValue() == Everything.rsiClient.getId().intValue()).collect(Collectors.toList());
@@ -145,7 +154,14 @@ public class MyReservationsController implements Initializable {
                     alert.setContentText("Are you ok with this?");
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == ButtonType.OK) {
-                        CinemaClient cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
+                        CinemaClient cinemaClient = null;
+                        try {
+                            cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        } catch (KeyManagementException e) {
+                            e.printStackTrace();
+                        }
                         RsiReservation test = findReservation(label.getText());
                         cinemaClient.removeReservation(test.getId().toString());
                         int index = reservationList.indexOf(test);
@@ -160,7 +176,14 @@ public class MyReservationsController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     //https://kbdeveloper.qoppa.com/javafx-pdf-viewer/
-                    CinemaClient cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
+                    CinemaClient cinemaClient = null;
+                    try {
+                        cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (KeyManagementException e) {
+                        e.printStackTrace();
+                    }
                     RsiReservation test = findReservation(label.getText());
                     Response response = cinemaClient.pdfReservation(test.getId().toString());
                     byte[] bais = response.readEntity(byte[].class);

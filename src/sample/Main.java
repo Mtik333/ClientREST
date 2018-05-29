@@ -5,9 +5,11 @@ import nothing.ResponseList;
 import nothing.RsiAuditorium;
 
 import javax.ws.rs.core.Response;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws NoSuchAlgorithmException, KeyManagementException {
         System.out.println("start");
         CinemaClient client2 = new CinemaClient();
         ResponseList responseList = client2.getAuditoriums2(ResponseList.class);

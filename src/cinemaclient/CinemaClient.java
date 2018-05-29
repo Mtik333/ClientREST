@@ -5,10 +5,17 @@
  */
 package cinemaclient;
 
+import javax.net.ssl.*;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 
 /**
  * Jersey REST client generated for REST resource:CinemaImpl [cinema]<br>
@@ -26,14 +33,28 @@ public class CinemaClient {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8099/ServerREST/webresources";
+    private static final String BASE_URI = "https://localhost:8443/ServerREST/webresources";
+//
+//    public CinemaClient() {
+//        client = javax.ws.rs.client.ClientBuilder.newClient();
+//        webTarget = client.target(BASE_URI).path("cinema");
+//    }
 
-    public CinemaClient() {
-        client = javax.ws.rs.client.ClientBuilder.newClient();
+    public CinemaClient() throws KeyManagementException, NoSuchAlgorithmException {
+        if (BASE_URI.contains("https")) {
+            SSLContext ctx = SSLContext.getInstance("SSL");
+            ctx.init(null, certs, new SecureRandom());
+            client = ClientBuilder.newBuilder()
+                    .hostnameVerifier(new TrustAllHostNameVerifier())
+                    .sslContext(ctx)
+                    .build();
+        } else {
+            client = javax.ws.rs.client.ClientBuilder.newClient();
+        }
         webTarget = client.target(BASE_URI).path("cinema");
     }
 
-    public CinemaClient(String username, String password) {
+    public CinemaClient(String username, String password) throws NoSuchAlgorithmException, KeyManagementException {
         this();
         setUsernamePassword(username, password);
     }
@@ -134,4 +155,30 @@ public class CinemaClient {
         client.close();
     }
 
+    TrustManager[] certs = new TrustManager[]{
+            new X509TrustManager() {
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+
+                @Override
+                public void checkServerTrusted(X509Certificate[] chain, String authType)
+                        throws CertificateException {
+                }
+
+                @Override
+                public void checkClientTrusted(X509Certificate[] chain, String authType)
+                        throws CertificateException {
+                }
+            }
+    };
+
+    public static class TrustAllHostNameVerifier implements HostnameVerifier {
+
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
+
+    }
 }

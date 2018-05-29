@@ -13,6 +13,8 @@ import nothing.*;
 
 import javax.ws.rs.core.Response;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 public class ReservationDetails implements Initializable {
@@ -35,7 +37,13 @@ public class ReservationDetails implements Initializable {
         numbers.getSelectionModel().select(0);
         System.out.println(seat.getId());
         button.setOnMouseClicked(event -> {
-            createReservation();
+            try {
+                createReservation();
+            } catch (KeyManagementException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Reservation status");
             alert.setHeaderText("Reservation successful");
@@ -47,7 +55,7 @@ public class ReservationDetails implements Initializable {
         );
     }
 
-    private void createReservation() {
+    private void createReservation() throws KeyManagementException, NoSuchAlgorithmException {
         int number = (int) numbers.getSelectionModel().getSelectedItem();
         CinemaClient cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
         for (int i = 0; i < number; i++) {

@@ -18,6 +18,8 @@ import nothing.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -34,7 +36,14 @@ public class SeatDetails implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CinemaClient cinemaClient = new CinemaClient();
+        CinemaClient cinemaClient = null;
+        try {
+            cinemaClient = new CinemaClient();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         ResponseList responseList = cinemaClient.getReservedSeats(ResponseList.class);
         ResponseList seatsList = cinemaClient.getSeats(ResponseList.class);
         seatReservedsFromScreening = responseList.getReservedseats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(rsiScreening.getId())).collect(Collectors.toList());

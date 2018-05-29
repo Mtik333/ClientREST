@@ -16,6 +16,8 @@ import nothing.RsiClient;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -34,7 +36,7 @@ public class Controller implements Initializable {
     private PasswordField password;
 
     @FXML
-    public void tryLogin() throws IOException {
+    public void tryLogin() throws IOException, KeyManagementException, NoSuchAlgorithmException {
         String username2 = username.getText();
         String password2 = password.getText();
         System.out.println("xd");

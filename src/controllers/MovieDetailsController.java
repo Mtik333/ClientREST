@@ -28,6 +28,8 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -67,7 +69,14 @@ public class MovieDetailsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mapScreeningAuditorium = new HashMap<>();
-        CinemaClient cinemaClient = new CinemaClient();
+        CinemaClient cinemaClient = null;
+        try {
+            cinemaClient = new CinemaClient();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         RsiMovie response2 = cinemaClient.getMessageHATEOAS(RsiMovie.class, movie.getId().toString());
         Response response = cinemaClient.getMessageHATEOASImage(Response.class, movie.getId().toString());
         ResponseList screeningsList = cinemaClient.getScreenings(ResponseList.class);

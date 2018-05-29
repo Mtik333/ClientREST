@@ -12,6 +12,8 @@ import nothing.*;
 
 import javax.ws.rs.core.Response;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -28,7 +30,14 @@ public class ChangeReservation implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CinemaClient cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
+        CinemaClient cinemaClient = null;
+        try {
+            cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
         ResponseList reservedSeatsList = cinemaClient.getReservedSeats(ResponseList.class);
         ResponseList seatsList = cinemaClient.getSeats(ResponseList.class);
         seatReservedsFromScreening = reservedSeatsList.getReservedseats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(reservation.getScreeningId().getId())).collect(Collectors.toList());
@@ -39,6 +48,7 @@ public class ChangeReservation implements Initializable {
         List<Integer> numbers = seats.stream().map(seat -> seat.getId()).collect(Collectors.toList());
         choiceBox.getItems().addAll(numbers);
         choiceBox.getSelectionModel().select(0);
+        CinemaClient finalCinemaClient = cinemaClient;
         changeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -46,7 +56,7 @@ public class ChangeReservation implements Initializable {
                 Marshal marshal = new Marshal();
                 marshal.setSeat(newSeat);
                 marshal.setReservation(reservation);
-                Response response = cinemaClient.changeReservation(marshal, reservation.getId().toString());
+                Response response = finalCinemaClient.changeReservation(marshal, reservation.getId().toString());
                 if (response.getStatus()==201){
                     dismiss();
                 }
