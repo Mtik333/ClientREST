@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Marshal {
 
-    protected RsiReservation reservation;
-    protected RsiSeat seat;
+    private RsiReservation reservation;
+    private RsiSeat seat;
 
     /**
      * Gets the value of the reservation property.

@@ -16,11 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import nothing.*;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Response;
-import javax.xml.ws.Service;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +28,9 @@ public class SeatDetails implements Initializable {
     public static RsiAuditorium rsiAuditorium;
     @FXML
     public GridPane gridPane;
-    List<RsiSeatReserved> seatReservedsFromScreening = new ArrayList<>();
+    private List<RsiSeatReserved> seatReservedsFromScreening = new ArrayList<>();
     List<RsiSeatReserved> seatReservedsFromSeat = new ArrayList<>();
-    List<RsiSeat> seats = new ArrayList<>();
+    private List<RsiSeat> seats = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,12 +59,11 @@ public class SeatDetails implements Initializable {
                     alert.showAndWait();
                 } else reservationMaker(GridPane.getColumnIndex(source) + 1, GridPane.getRowIndex(source) + 1);
             });
-            //gridPane.getChildren().add(0,pane);
             gridPane.add(pane, i / 5, i % 5);
         }
     }
 
-    public boolean test2(RsiSeat seat) {
+    private boolean test2(RsiSeat seat) {
         for (RsiSeatReserved screeningSeatReserver : seatReservedsFromScreening) {
             if (screeningSeatReserver.getSeatId().getId().intValue()==seat.getId().intValue())
                 return true;
@@ -76,7 +71,7 @@ public class SeatDetails implements Initializable {
         return false;
     }
 
-    public RsiSeat findSeatByRowColumn(int column, int row) {
+    private RsiSeat findSeatByRowColumn(int column, int row) {
         for (RsiSeat seat : seats) {
             if (seat.getSeatNumber() == column && seat.getSeatRow() == row) {
                 return seat;
@@ -86,7 +81,7 @@ public class SeatDetails implements Initializable {
     }
 
 
-    public void reservationMaker(int column, int row) {
+    private void reservationMaker(int column, int row) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/ReservationDetails.fxml"));
         ReservationDetails.seat = findSeatByRowColumn(column, row);
         ReservationDetails.screening = rsiScreening;

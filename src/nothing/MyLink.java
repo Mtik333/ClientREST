@@ -11,8 +11,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class MyLink {
 
-    protected String image;
-    protected String self;
+    private String image;
+    private String self;
 
     public String getImage() {
         return image;

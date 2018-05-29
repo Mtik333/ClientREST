@@ -8,11 +8,11 @@
 
 package nothing;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -52,13 +52,13 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResponseList {
 
-    protected List<RsiAuditorium> auditoriums;
-    protected List<RsiClient> clients;
-    protected List<RsiMovie> movies;
-    protected List<RsiReservation> reservations;
-    protected List<RsiScreening> screenings;
-    protected List<RsiSeat> seats;
-    protected List<RsiSeatReserved> reservedseats;
+    private List<RsiAuditorium> auditoriums;
+    private List<RsiClient> clients;
+    private List<RsiMovie> movies;
+    private List<RsiReservation> reservations;
+    private List<RsiScreening> screenings;
+    private List<RsiSeat> seats;
+    private List<RsiSeatReserved> reservedseats;
 
     /**
      * Gets the value of the auditoriums property.

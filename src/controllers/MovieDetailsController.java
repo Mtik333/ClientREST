@@ -1,7 +1,6 @@
 package controllers;
 
 import cinemaclient.CinemaClient;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,11 +25,8 @@ import nothing.RsiScreening;
 
 import javax.ws.rs.core.Response;
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -39,7 +35,7 @@ import java.util.stream.Collectors;
 public class MovieDetailsController implements Initializable {
 
     public static RsiMovie movie;
-    static Map<RsiScreening, RsiAuditorium> mapScreeningAuditorium = new HashMap<>();
+    private static Map<RsiScreening, RsiAuditorium> mapScreeningAuditorium = new HashMap<>();
     @FXML
     public ImageView imageView;
     @FXML
@@ -74,17 +70,8 @@ public class MovieDetailsController implements Initializable {
         CinemaClient cinemaClient = new CinemaClient();
         RsiMovie response2 = cinemaClient.getMessageHATEOAS(RsiMovie.class, movie.getId().toString());
         Response response = cinemaClient.getMessageHATEOASImage(Response.class, movie.getId().toString());
-        //Response response = cinemaClient.downloadImage(Response.class, movie.getId()+".png");
         ResponseList screeningsList = cinemaClient.getScreenings(ResponseList.class);
         byte[] bytes = response.readEntity(byte[].class);
-//        try {
-//            Everything.getGregorianCalendar(screeningsList.getScreenings().get(0).getScreeningStart());
-//        } catch (DatatypeConfigurationException e) {
-//            e.printStackTrace();
-//        }
-//        HelloWorldImplService implService = new HelloWorldImplService();
-//        HelloWorld hello = implService.getHelloWorldImplPort();
-//        byte[] bytes = hello.downloadImage(movie.getId() +".png");
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Image image = new Image(bais);
         imageView.setImage(image);
@@ -138,7 +125,7 @@ public class MovieDetailsController implements Initializable {
         Button button = new Button("Details");
         String lastItem;
 
-        public XCell() {
+        XCell() {
             super();
             hbox.getChildren().addAll(label, pane, button);
             HBox.setHgrow(pane, Priority.ALWAYS);

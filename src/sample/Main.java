@@ -5,7 +5,6 @@ import nothing.ResponseList;
 import nothing.RsiAuditorium;
 
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args){

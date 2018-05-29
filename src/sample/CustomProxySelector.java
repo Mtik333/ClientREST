@@ -6,7 +6,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomProxySelector extends ProxySelector {
+class CustomProxySelector extends ProxySelector {
     @Override
     public List<Proxy> select(URI uri) {
         Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost",8111));

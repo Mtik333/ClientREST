@@ -16,7 +16,8 @@ import nothing.RsiClient;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
@@ -37,14 +38,6 @@ public class Controller implements Initializable {
         String username2 = username.getText();
         String password2 = password.getText();
         System.out.println("xd");
-//        HelloWorldImplService implService = new HelloWorldImplService();
-//        HelloWorld hello = implService.getHelloWorldImplPort();
-//        Map<String, Object> req_ctx = ((BindingProvider) hello).getRequestContext();
-//        req_ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8111/SOAPServer/HelloWorldImplService?wsdl");
-//        Map<String, List<String>> headers = new HashMap<String, List<String>>();
-//        headers.put("Username", Collections.singletonList(username2));
-//        headers.put("Password", Collections.singletonList(password2));
-//        req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
             CinemaClient cinemaClient = new CinemaClient(username2,password2);
             Response response = cinemaClient.authenticateClient(Response.class);
             if (response.getStatus()==Response.Status.ACCEPTED.getStatusCode()){
@@ -67,7 +60,7 @@ public class Controller implements Initializable {
             }
     }
 
-    public void dismiss() {
+    private void dismiss() {
         Stage stage = (Stage) username.getScene().getWindow();
         stage.close();
     }

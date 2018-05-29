@@ -38,7 +38,7 @@ public class CinemaClient {
         setUsernamePassword(username, password);
     }
 
-    public final void setUsernamePassword(String username, String password) {
+    private void setUsernamePassword(String username, String password) {
         webTarget.register(new org.glassfish.jersey.client.filter.HttpBasicAuthFilter(username, password));
     }
 

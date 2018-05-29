@@ -8,13 +8,12 @@
 
 package nothing;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.ws.rs.core.Link;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -54,14 +53,14 @@ import javax.ws.rs.core.Link;
 })
 public class RsiMovie {
 
-    protected String actors;
-    protected String description;
-    protected String director;
-    protected Integer duration;
-    protected Integer id;
+    private String actors;
+    private String description;
+    private String director;
+    private Integer duration;
+    private Integer id;
     @XmlElement(required = true)
     protected MyLink links;
-    protected String title;
+    private String title;
 
     /**
      * Gets the value of the actors property.
@@ -211,9 +210,9 @@ public class RsiMovie {
     @XmlType(name = "", propOrder = {
             "entry"
     })
-    public static class Links {
+    static class Links {
 
-        protected List<RsiMovie.Links.Entry> entry;
+        List<RsiMovie.Links.Entry> entry;
 
         /**
          * Gets the value of the entry property.
@@ -270,10 +269,10 @@ public class RsiMovie {
                 "key",
                 "value"
         })
-        public static class Entry {
+        static class Entry {
 
-            protected String key;
-            protected String value;
+            String key;
+            String value;
 
             /**
              * Gets the value of the key property.

@@ -48,12 +48,12 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RsiReservation {
 
-    protected RsiClient clientReserverId;
-    protected RsiScreening screeningId;
-    protected Boolean active;
-    protected Integer id;
-    protected String reservationContact;
-    protected Boolean reserved;
+    private RsiClient clientReserverId;
+    private RsiScreening screeningId;
+    private Boolean active;
+    private Integer id;
+    private String reservationContact;
+    private Boolean reserved;
 
     /**
      * Gets the value of the clientReserverId property.

@@ -11,9 +11,6 @@ import javafx.stage.Stage;
 import nothing.*;
 
 import javax.ws.rs.core.Response;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +23,12 @@ public class ChangeReservation implements Initializable {
     public ChoiceBox choiceBox;
     @FXML
     public Button changeButton;
-    List<RsiSeatReserved> seatReservedsFromScreening = new ArrayList<>();
-    List<RsiSeat> seats = new ArrayList<>();
+    private List<RsiSeatReserved> seatReservedsFromScreening = new ArrayList<>();
+    private List<RsiSeat> seats = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CinemaClient cinemaClient = new CinemaClient();
+        CinemaClient cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
         ResponseList reservedSeatsList = cinemaClient.getReservedSeats(ResponseList.class);
         ResponseList seatsList = cinemaClient.getSeats(ResponseList.class);
         seatReservedsFromScreening = reservedSeatsList.getReservedseats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(reservation.getScreeningId().getId())).collect(Collectors.toList());
@@ -50,8 +47,9 @@ public class ChangeReservation implements Initializable {
                 marshal.setSeat(newSeat);
                 marshal.setReservation(reservation);
                 Response response = cinemaClient.changeReservation(marshal, reservation.getId().toString());
-                int i=0;
-                //hello.changeReservation(reservation, newSeat);
+                if (response.getStatus()==201){
+                    dismiss();
+                }
             }
         });
     }

@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlRegistry
-public class ObjectFactory {
+class ObjectFactory {
 
     private final static QName _RsiScreening_QNAME = new QName("", "rsiScreening");
     private final static QName _RsiSeatReserved_QNAME = new QName("", "rsiSeatReserved");

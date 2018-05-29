@@ -44,10 +44,10 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RsiSeat {
 
-    protected RsiAuditorium auditoriumId;
-    protected Integer id;
-    protected int seatNumber;
-    protected int seatRow;
+    private RsiAuditorium auditoriumId;
+    private Integer id;
+    private int seatNumber;
+    private int seatRow;
 
     /**
      * Gets the value of the auditoriumId property.

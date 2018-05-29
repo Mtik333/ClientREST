@@ -52,11 +52,11 @@ import java.util.Date;
 })
 public class RsiScreening {
 
-    protected RsiAuditorium auditoriumId;
-    protected RsiMovie movieId;
-    protected Integer id;
+    private RsiAuditorium auditoriumId;
+    private RsiMovie movieId;
+    private Integer id;
     @XmlSchemaType(name = "dateTime")
-    protected long screeningStart;
+    private long screeningStart;
 
     /**
      * Gets the value of the auditoriumId property.

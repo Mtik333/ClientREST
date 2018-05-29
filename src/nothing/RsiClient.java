@@ -42,9 +42,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RsiClient {
 
-    protected Integer id;
-    protected String password;
-    protected String username;
+    private Integer id;
+    private String password;
+    private String username;
 
     /**
      * Gets the value of the id property.

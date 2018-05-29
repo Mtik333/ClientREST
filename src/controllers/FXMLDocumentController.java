@@ -22,10 +22,7 @@ import javafx.util.Callback;
 import nothing.ResponseList;
 import nothing.RsiMovie;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +31,7 @@ import java.util.stream.Collectors;
 
 public class FXMLDocumentController implements Initializable {
 
-    static List<RsiMovie> movies = new ArrayList<>();
+    private static List<RsiMovie> movies = new ArrayList<>();
     @FXML
     private ListView listView;
 
@@ -72,10 +69,6 @@ public class FXMLDocumentController implements Initializable {
         Stage stage_root = (Stage) listView.getScene().getWindow();
         stage_root.setTitle("RSI Cinema - my reservations");
         stage_root.setScene(new Scene(root1));
-//
-//        Stage stage = new Stage();
-//        stage.setTitle("My reservations");
-//        stage.setScene(new Scene(root1));
         stage_root.showAndWait();
     }
 
@@ -92,7 +85,7 @@ public class FXMLDocumentController implements Initializable {
         Button button = new Button("Details");
         String lastItem;
 
-        public XCell() {
+        XCell() {
             super();
             hbox.getChildren().addAll(label, pane, button);
             HBox.setHgrow(pane, Priority.ALWAYS);

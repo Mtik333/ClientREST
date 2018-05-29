@@ -12,9 +12,6 @@ import javafx.stage.Stage;
 import nothing.*;
 
 import javax.ws.rs.core.Response;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -52,7 +49,7 @@ public class ReservationDetails implements Initializable {
 
     private void createReservation() {
         int number = (int) numbers.getSelectionModel().getSelectedItem();
-        CinemaClient cinemaClient = new CinemaClient();
+        CinemaClient cinemaClient = new CinemaClient(Everything.rsiClient.getUsername(),Everything.rsiClient.getPassword());
         for (int i = 0; i < number; i++) {
             Marshal marshal = new Marshal();
             RsiReservation rsiReservation = new RsiReservation();
@@ -64,8 +61,6 @@ public class ReservationDetails implements Initializable {
             marshal.setReservation(rsiReservation);
             marshal.setSeat(rsiSeat);
             Response response = cinemaClient.createReservation(marshal);
-
-            //hello.createReservation(rsiReservation, findSeatByNumber(hello, seat.getId() + i));
         }
     }
 
