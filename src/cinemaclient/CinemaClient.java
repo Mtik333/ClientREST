@@ -65,7 +65,7 @@ public class CinemaClient {
     }
 
     public Response pdfReservation(String id) throws ClientErrorException {
-        return webTarget.path(java.text.MessageFormat.format("pdf/{0}", new Object[]{id})).request().post(null, Response.class);
+        return webTarget.path(java.text.MessageFormat.format("pdf/{0}", new Object[]{id})).request().get(Response.class);
     }
 
     public <T> T authenticateClient(Class<T> responseType) throws ClientErrorException {
