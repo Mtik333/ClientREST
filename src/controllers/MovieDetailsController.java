@@ -72,7 +72,9 @@ public class MovieDetailsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mapScreeningAuditorium = new HashMap<>();
         CinemaClient cinemaClient = new CinemaClient();
-        Response response = cinemaClient.downloadImage(Response.class, movie.getId()+".png");
+        RsiMovie response2 = cinemaClient.getMessageHATEOAS(RsiMovie.class, movie.getId().toString());
+        Response response = cinemaClient.getMessageHATEOASImage(Response.class, movie.getId().toString());
+        //Response response = cinemaClient.downloadImage(Response.class, movie.getId()+".png");
         ResponseList screeningsList = cinemaClient.getScreenings(ResponseList.class);
         byte[] bytes = response.readEntity(byte[].class);
 //        try {

@@ -61,8 +61,8 @@ public class ReservationDetails implements Initializable {
             rsiReservation.setClientReserverId(Everything.rsiClient);
             rsiReservation.setScreeningId(screening);
             RsiSeat rsiSeat = findSeatByNumber(cinemaClient, seat.getId()+i);
-            marshal.setRsiReservation(rsiReservation);
-            marshal.setRsiSeat(rsiSeat);
+            marshal.setReservation(rsiReservation);
+            marshal.setSeat(rsiSeat);
             Response response = cinemaClient.createReservation(marshal);
 
             //hello.createReservation(rsiReservation, findSeatByNumber(hello, seat.getId() + i));

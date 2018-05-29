@@ -1,68 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="235.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SeatDetails">
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="235.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="controllers.SeatDetails">
     <children>
         <VBox prefHeight="253.0" prefWidth="600.0">
             <children>
-            <HBox>
-               <children>
-                  <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                  <Label text="Click on seat to make a reservation">
-                     <font>
-                        <Font name="Arial Bold" size="17.0" />
-                     </font>
-                  </Label>
-                  <Pane HBox.hgrow="ALWAYS" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0">
-               <children>
-                  <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                  <Label text="Select one of the seats: available are marked as green, unavaillable: marked as red">
-                     <font>
-                        <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-                  <Pane HBox.hgrow="ALWAYS" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
+                <HBox>
+                    <children>
+                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS"/>
+                        <Label text="Click on seat to make a reservation">
+                            <font>
+                                <Font name="Arial Bold" size="17.0"/>
+                            </font>
+                        </Label>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="10.0">
+                    <children>
+                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS"/>
+                        <Label text="Select one of the seats: available are marked as green, unavaillable: marked as red">
+                            <font>
+                                <Font name="Arial" size="13.0"/>
+                            </font>
+                        </Label>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </HBox>
                 <GridPane fx:id="gridPane" gridLinesVisible="true">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="50.0" right="50.0" top="5.0"/>
+                    </VBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
                 </GridPane>
             </children>
         </VBox>

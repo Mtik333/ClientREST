@@ -1,135 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="429.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MovieDetailsController">
+<AnchorPane prefHeight="484.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MovieDetailsController">
     <children>
-        <HBox prefHeight="429.0" prefWidth="600.0">
+        <HBox prefHeight="484.0" prefWidth="600.0">
             <children>
-            <VBox prefHeight="397.0" prefWidth="200.0">
-               <children>
-                      <ImageView fx:id="imageView" fitHeight="358.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <HBox>
-                     <children>
-                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                        <Label fx:id="movieDescription" text="Label" textAlignment="CENTER" wrapText="true">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding></Label>
-                        <Pane HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
+                <VBox prefHeight="397.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fx:id="imageView" fitHeight="358.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <HBox>
+                            <children>
+                                <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                <Label fx:id="movieDescription" text="Label" textAlignment="CENTER" wrapText="true">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </Label>
+                                <Pane HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
                 <Separator orientation="VERTICAL" prefHeight="200.0" />
                 <VBox prefHeight="400.0" prefWidth="401.0">
                     <children>
                         <HBox prefHeight="24.0" prefWidth="384.0">
                             <children>
-                                <Label prefWidth="55.0" text="Title">
-                           <padding>
-                              <Insets bottom="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></Label>
+                                <Label prefWidth="65.0" text="Title">
+                                    <padding>
+                                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Label>
                                 <TextField fx:id="titleTextField" editable="false" prefWidth="280.0">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></TextField>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextField>
                             </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="10.0" prefHeight="34.0" prefWidth="384.0">
                             <children>
-                                <Label prefWidth="55.0" text="Actors">
-                           <padding>
-                              <Insets bottom="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></Label>
+                                <Label prefWidth="65.0" text="Actors">
+                                    <padding>
+                                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Label>
                                 <TextField fx:id="actorsTextField" editable="false" prefHeight="27.0" prefWidth="280.0">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding></TextField>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </TextField>
                             </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
                         </HBox>
                         <HBox layoutX="10.0" layoutY="110.0" prefHeight="27.0" prefWidth="384.0">
                             <children>
-                                <Label prefWidth="55.0" text="Director">
-                           <padding>
-                              <Insets bottom="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></Label>
+                                <Label prefWidth="65.0" text="Director">
+                                    <padding>
+                                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Label>
                                 <TextField fx:id="directorTextField" editable="false" prefHeight="27.0" prefWidth="280.0">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></TextField>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextField>
                             </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
                         </HBox>
                         <Label text="Screenings">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
                         <ListView fx:id="screeningsListView" prefHeight="200.0" prefWidth="200.0">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin></ListView>
-                  <HBox>
-                     <children>
-                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#dismiss" prefHeight="25.0" prefWidth="70.0" text="Close">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Pane HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                        </ListView>
+                        <HBox>
+                            <children>
+                                <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#dismiss" prefHeight="25.0" prefWidth="70.0" text="Close">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Pane HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
                     </children>
                 </VBox>
             </children>

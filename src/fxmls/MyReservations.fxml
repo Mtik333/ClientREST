@@ -1,59 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-
-<AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MyReservationsController">
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="462.0" prefWidth="693.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="controllers.MyReservationsController">
     <children>
-      <MenuBar prefHeight="25.0" prefWidth="693.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Movies">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#goToMyReservations" text="Show movies" />
-                  <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#dismiss" text="Exit" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
+        <MenuBar prefHeight="25.0" prefWidth="693.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Movies">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#goToMyReservations" text="Show movies"/>
+                        <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#dismiss" text="Exit"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
         <Pane layoutY="25.0" prefHeight="437.0" prefWidth="586.0">
             <children>
-            <VBox prefHeight="437.0" prefWidth="693.0">
-               <children>
-                  <HBox prefHeight="31.0" prefWidth="502.0">
-                     <children>
-                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                        <Label text="My reservations">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Pane HBox.hgrow="ALWAYS" />
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                      <ListView fx:id="listView" prefHeight="400.0" prefWidth="502.0">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </ListView>
-               </children>
-            </VBox>
+                <VBox prefHeight="437.0" prefWidth="693.0">
+                    <children>
+                        <HBox prefHeight="31.0" prefWidth="502.0">
+                            <children>
+                                <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS"/>
+                                <Label text="My reservations">
+                                    <font>
+                                        <Font size="15.0"/>
+                                    </font>
+                                </Label>
+                                <Pane HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </HBox>
+                        <ListView fx:id="listView" prefHeight="400.0" prefWidth="502.0">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </ListView>
+                    </children>
+                </VBox>
             </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
         </Pane>
     </children>
 </AnchorPane>

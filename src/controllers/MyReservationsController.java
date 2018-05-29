@@ -67,13 +67,13 @@ public class MyReservationsController implements Initializable {
             Date date = null;
             try {
                 date = rsiReservation.getScreeningId().getGregorianCalendar().toGregorianCalendar().getTime();
+                DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+                String formattedDate  = formatter.format(date);
+                sb.append(formattedDate);
+                reservations.add(sb.toString());
             } catch (DatatypeConfigurationException e) {
                 e.printStackTrace();
             }
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-            String formattedDate  = formatter.format(date);
-            sb.append(formattedDate);
-            reservations.add(sb.toString());
         }
         list = FXCollections.observableArrayList(reservations);
         listView.setItems(list);

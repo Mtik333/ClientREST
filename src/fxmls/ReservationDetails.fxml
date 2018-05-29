@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="167.0" prefWidth="165.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationDetails">
+<AnchorPane prefHeight="196.0" prefWidth="305.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationDetails">
     <children>
-        <VBox prefHeight="196.0" prefWidth="246.0">
+        <VBox prefHeight="198.0" prefWidth="305.0">
             <children>
-            <HBox>
-               <children>
-                  <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                  <Label text="Reserve tickets">
-                     <font>
-                        <Font name="Arial Bold" size="17.0" />
-                     </font>
-                  </Label>
-                  <Pane HBox.hgrow="ALWAYS" />
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
+                <HBox>
+                    <children>
+                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                        <Label text="Reserve tickets">
+                            <font>
+                                <Font name="Arial Bold" size="17.0" />
+                            </font>
+                        </Label>
+                        <Pane HBox.hgrow="ALWAYS" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
                 <HBox prefHeight="31.0" prefWidth="200.0">
                     <children>
                         <Label prefHeight="25.0" prefWidth="163.0" text="Starting seat" />
                         <TextField fx:id="seatId" editable="false" />
                     </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </VBox.margin>
                 </HBox>
                 <HBox prefHeight="31.0" prefWidth="200.0">
                     <children>
                         <Label prefHeight="25.0" prefWidth="163.0" text="Number of seats" />
                         <ChoiceBox fx:id="numbers" prefWidth="150.0" />
                     </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </VBox.margin>
                 </HBox>
-            <HBox>
-               <children>
-                  <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                      <Button fx:id="button" mnemonicParsing="false" text="Reserve ticket" />
-                  <Pane HBox.hgrow="ALWAYS" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
+                <HBox>
+                    <children>
+                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="button" mnemonicParsing="false" text="Reserve ticket" />
+                        <Pane HBox.hgrow="ALWAYS" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
             </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
         </VBox>
     </children>
 </AnchorPane>

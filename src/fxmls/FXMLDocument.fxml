@@ -1,76 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-
-<AnchorPane id="AnchorPane" prefHeight="462.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLDocumentController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="462.0" prefWidth="586.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="controllers.FXMLDocumentController">
     <children>
         <MenuBar prefHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Reservations">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#goToMyReservations" text="Show my reservations" />
-                        <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#dismiss" text="Exit" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToMyReservations" text="Show my reservations"/>
+                        <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#dismiss" text="Exit"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
         <Pane layoutY="25.0" prefHeight="437.0" prefWidth="502.0">
             <children>
-            <VBox prefHeight="437.0" prefWidth="586.0">
-               <children>
-                  <HBox>
-                     <children>
-                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                        <Label text="RSI Cinema">
-                           <font>
-                              <Font name="Arial Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <Pane HBox.hgrow="ALWAYS" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="50.0" prefWidth="200.0">
-                     <children>
-                        <Pane />
-                        <Pane />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="25.0">
-                     <children>
-                        <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
-                            <Label text="Movies available in cinema">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Pane HBox.hgrow="ALWAYS" />
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                      <ListView fx:id="listView">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </ListView>
-               </children>
-            </VBox>
+                <VBox prefHeight="437.0" prefWidth="586.0">
+                    <children>
+                        <HBox>
+                            <children>
+                                <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS"/>
+                                <Label text="RSI Cinema">
+                                    <font>
+                                        <Font name="Arial Bold" size="17.0"/>
+                                    </font>
+                                </Label>
+                                <Pane HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="15.0"/>
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="200.0">
+                            <children>
+                                <Pane/>
+                                <Pane/>
+                            </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="25.0">
+                            <children>
+                                <Pane layoutX="90.0" layoutY="10.0" HBox.hgrow="ALWAYS"/>
+                                <Label text="Movies available in cinema">
+                                    <font>
+                                        <Font size="15.0"/>
+                                    </font>
+                                </Label>
+                                <Pane HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </HBox>
+                        <ListView fx:id="listView">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </ListView>
+                    </children>
+                </VBox>
             </children>
         </Pane>
     </children>

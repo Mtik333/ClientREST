@@ -38,10 +38,34 @@ public class CinemaClient {
         setUsernamePassword(username, password);
     }
 
+    public final void setUsernamePassword(String username, String password) {
+        webTarget.register(new org.glassfish.jersey.client.filter.HttpBasicAuthFilter(username, password));
+    }
+
+    public Response createReservation(Object requestEntity) throws ClientErrorException {
+        return webTarget.path("reservations").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
+    }
+
     public <T> T getHeaders(Class<T> responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path("headers");
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
+    public <T> T getMessageHATEOAS(Class<T> responseType, String movieId) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("hateoas/{0}", new Object[]{movieId}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
+    public <T> T getMessageHATEOASImage(Class<T> responseType, String movieId) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("movie/{0}/image", new Object[]{movieId}));
+        return resource.request().get(responseType);
+    }
+
+    public Response pdfReservation(String id) throws ClientErrorException {
+        return webTarget.path(java.text.MessageFormat.format("pdf/{0}", new Object[]{id})).request().post(null, Response.class);
     }
 
     public <T> T authenticateClient(Class<T> responseType) throws ClientErrorException {
@@ -56,6 +80,10 @@ public class CinemaClient {
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
     }
 
+    public Response removeReservation(String id) throws ClientErrorException {
+        return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request().delete(Response.class);
+    }
+
     public <T> T getMovies(Class<T> responseType) throws ClientErrorException {
         WebTarget resource = webTarget;
         resource = resource.path("movies");
@@ -66,6 +94,10 @@ public class CinemaClient {
         WebTarget resource = webTarget;
         resource = resource.path("reservedseats");
         return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
+    public Response changeReservation(Object requestEntity, String id) throws ClientErrorException {
+        return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
     }
 
     public <T> T getAuditoriums2(Class<T> responseType) throws ClientErrorException {
@@ -98,25 +130,6 @@ public class CinemaClient {
         return resource.request().get(responseType);
     }
 
-    public final void setUsernamePassword(String username, String password) {
-        webTarget.register(new org.glassfish.jersey.client.filter.HttpBasicAuthFilter(username, password));
-    }
-
-    public Response createReservation(Object requestEntity) throws ClientErrorException {
-        return webTarget.path("reservations").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
-    }
-
-    public Response changeReservation(Object requestEntity, String id) throws ClientErrorException {
-        return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request(javax.ws.rs.core.MediaType.APPLICATION_JSON).put(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), Response.class);
-    }
-
-    public Response removeReservation(String id) throws ClientErrorException {
-        return webTarget.path(java.text.MessageFormat.format("reservations/{0}", new Object[]{id})).request().delete(Response.class);
-    }
-
-    public Response pdfReservation(String id) throws ClientErrorException {
-        return webTarget.path(java.text.MessageFormat.format("pdf/{0}", new Object[]{id})).request().post(null, Response.class);
-    }
     public void close() {
         client.close();
     }

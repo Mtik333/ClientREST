@@ -47,8 +47,8 @@ public class ChangeReservation implements Initializable {
             public void handle(ActionEvent event) {
                 RsiSeat newSeat = seats.stream().filter(rsiSeat -> ((rsiSeat.getSeatNumber()-1)*5+rsiSeat.getSeatRow()) == (int) choiceBox.getSelectionModel().getSelectedItem()).findFirst().get();
                 Marshal marshal = new Marshal();
-                marshal.setRsiSeat(newSeat);
-                marshal.setRsiReservation(reservation);
+                marshal.setSeat(newSeat);
+                marshal.setReservation(reservation);
                 Response response = cinemaClient.changeReservation(marshal, reservation.getId().toString());
                 int i=0;
                 //hello.changeReservation(reservation, newSeat);
