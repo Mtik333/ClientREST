@@ -33,7 +33,7 @@ public class CinemaClient {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "https://localhost:8443/ServerREST/webresources";
+    private static final String BASE_URI = "http://localhost:8099/ServerREST/webresources";
 //
 //    public CinemaClient() {
 //        client = javax.ws.rs.client.ClientBuilder.newClient();

@@ -45,7 +45,7 @@ public class ChangeReservation implements Initializable {
         for (RsiSeatReserved seat : seatReservedsFromScreening) {
             seats = seats.stream().filter(myseat -> myseat.getId().intValue() != seat.getSeatId().getId().intValue()).collect(Collectors.toList());
         }
-        List<Integer> numbers = seats.stream().map(seat -> seat.getId()).collect(Collectors.toList());
+        List<Integer> numbers = seats.stream().map(seat -> ((seat.getSeatNumber()-1)*5+seat.getSeatRow())).sorted().collect(Collectors.toList());
         choiceBox.getItems().addAll(numbers);
         choiceBox.getSelectionModel().select(0);
         CinemaClient finalCinemaClient = cinemaClient;

@@ -17,6 +17,6 @@ class CustomProxySelector extends ProxySelector {
 
     @Override
     public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
-        System.out.println("Connection to: "+uri+"failed");
+        System.out.println("Connection to: "+uri+ "failed");
     }
 }
